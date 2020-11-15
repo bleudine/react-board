@@ -1,8 +1,8 @@
 import {MESSAGES, THREADS, TOPICS} from '../mocks';
 
-function messages(id) {
+function messages(id, page = 1) {
   return new Promise((resolve, reject) => {
-    fetch(`https://5fafee177edddb0016467f84.mockapi.io/thread/${id}/message`)
+    fetch(`/api/thread/${id}/message?page=${page}`)
       .then(res => res.json())
       .then(resolve)
       .catch(reject)
@@ -11,7 +11,7 @@ function messages(id) {
 
 function thread(id) {
   return new Promise((resolve, reject) => {
-    fetch(`https://5fafee177edddb0016467f84.mockapi.io/thread/${id}`)
+    fetch(`/api/thread/${id}`)
       .then(res => res.json())
       .then(resolve)
       .catch(reject)
@@ -20,9 +20,9 @@ function thread(id) {
 
 function threads() {
   return new Promise((resolve, reject) => {
-    fetch(`https://5fafee177edddb0016467f84.mockapi.io/thread`)
+    fetch(`/api/thread`)
       .then(res => res.json())
-      .then(resolve)
+      .then((response) => resolve(response.threads))
       .catch(reject)
   })
 }

@@ -5,6 +5,8 @@ import {useMessages} from '../../../utils/contexts/messages';
 import Message from '../../components/Message/Message';
 import MessageForm from '../../components/MessageForm/MessageForm';
 
+import styles from './Thread.module.css'
+
 function Thread() {
     const [messages, getMessages, postMessage] = useMessages()
   const { id } = useParams()
@@ -14,12 +16,18 @@ function Thread() {
   }, [])
 
   return (
-    <div>
-      {
-        messages.map(({ content, author, avatar, createdAt }) => (
-          <Message avatar={avatar} createdAt={createdAt} author={author} content={content} />
-        ))
-      }
+    <div className={styles.container}>
+      <header>
+        THIS IS THE HEADER
+      </header>
+      <main className={styles.messageList}>
+        {
+          messages.map(({ content, author, avatar, createdAt }) => (
+            <Message avatar={avatar} createdAt={createdAt} author={author} content={content} />
+          ))
+        }
+      </main>
+      <footer>THIS IS THE FOOTER</footer>
       <MessageForm onSubmit={(message) => postMessage(id, message)} />
     </div>
   )

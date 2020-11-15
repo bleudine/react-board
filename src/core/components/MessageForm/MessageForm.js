@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './MessageForm.module.css'
 
 function MessageForm({ onSubmit }) {
   const [message, setMessage] = React.useState('')
@@ -7,9 +8,10 @@ function MessageForm({ onSubmit }) {
     onSubmit(message)
   }
   return (
-    <form onSubmit={onFormSubmit}>
-      <textarea value={message} onChange={(e) => setMessage(e.target.value)} />
-      <input type="submit" value="Send" />
+    <form className={styles.form} onSubmit={onFormSubmit}>
+      <label htmlFor="content" />
+      <textarea name="content" className={styles.textarea} value={message} onChange={(e) => setMessage(e.target.value)} />
+      <input className={styles.button} type="submit" value="Send" />
     </form>
   )
 }

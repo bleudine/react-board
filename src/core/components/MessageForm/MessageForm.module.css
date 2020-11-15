@@ -1,0 +1,28 @@
+.form {
+    padding: 4px;
+    margin: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+
+}
+
+.textarea {
+    height: 125px;
+    background-color: transparent;
+    border-color: #edae49;
+    color: #edae49;
+    padding: 10px;
+}
+
+.button {
+    background-color: #edae49;
+    color: #003D5B;
+    padding: 4px 8px;
+    font-size: 16px;
+    text-transform: uppercase;
+    align-self: center;
+    margin: 12px;
+}

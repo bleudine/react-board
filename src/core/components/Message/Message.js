@@ -18,7 +18,7 @@ function Message({ content, author, createdAt, avatar }) {
           {content}
         </div>
         <footer className={styles.footer}>
-          {date.toDateString()}
+          Posted on {date.toDateString()}
         </footer>
       </main>
     </div>
