@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import api from '../api'
 
 export const MessagesContext = React.createContext(null)

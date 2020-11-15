@@ -6,15 +6,21 @@
 }
 
 .label {
+    margin: 8px 0;
+    color: whitesmoke;
+}
 
+.textInput, .textarea {
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #edae49;
+    color: #edae49;
+    padding: 10px;
 }
 
 .textarea {
     height: 125px;
-    background-color: transparent;
-    border-color: #edae49;
-    color: #edae49;
-    padding: 10px;
 }
 
 .button {

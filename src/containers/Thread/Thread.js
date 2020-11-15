@@ -26,9 +26,11 @@ function Thread() {
         <Link className={styles.goBackLink} to="/">Discussions</Link> :: <span className={styles.threadTitle}>{title}</span>
       </header>
       <main className={styles.messageList}>
-        <div className={styles.initialPost}>
-          <Message author={author} content={content} createdAt={createdAt} avatar={avatar} />
-        </div>
+        {title && (
+          <div className={styles.initialPost}>
+            <Message author={author} content={content} createdAt={createdAt} avatar={avatar} />
+          </div>
+        )}
         {
           messages.map(({ content, author, avatar, createdAt }) => (
             <Message avatar={avatar} createdAt={createdAt} author={author} content={content} />
