@@ -15,7 +15,10 @@ export function useMessages() {
 
 const initialState = {
   count: 0,
-  messages: []
+  messages: [],
+  initialPost: {
+    title: '',
+  }
 }
 
 function reducer(state, action) {
@@ -23,6 +26,7 @@ function reducer(state, action) {
     case 'SET_MESSAGES':
       return {
         messages: action.messages,
+        initialPost: action.initialPost,
         count: action.count,
       }
     default:
@@ -32,13 +36,12 @@ function reducer(state, action) {
 
 export function MessageProvider(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  const { search } = useLocation()
-  function getMessages(id) {
-    const params = new URLSearchParams(search)
-    api.get.messages(id, params.get('page')).then(({items, count}) => dispatch({
+  function getMessages(id, page) {
+    api.get.messages(id, page).then(({items, count, initialPost}) => dispatch({
       type: 'SET_MESSAGES',
       messages: items,
       count,
+      initialPost,
     }))
   }
 
@@ -46,7 +49,7 @@ export function MessageProvider(props) {
     api.post.message(id, message).then(() => getMessages(id))
   }
 
-  const value = React.useMemo(() => [state.messages, getMessages, postMessage], [state])
+  const value = React.useMemo(() => [state, getMessages, postMessage], [state])
 
   return <MessagesContext.Provider value={value} {...props} />
 }

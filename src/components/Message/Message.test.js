@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 
 import Message from './Message'
 
-import { MESSAGES } from '../../../utils/mocks';
+import { MESSAGES } from '../../utils/mocks';
 
 test('renders a single message', () => {
   const [{content, author}] = MESSAGES

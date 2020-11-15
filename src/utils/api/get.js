@@ -2,7 +2,7 @@ import {MESSAGES, THREADS, TOPICS} from '../mocks';
 
 function messages(id, page = 1) {
   return new Promise((resolve, reject) => {
-    fetch(`/api/thread/${id}/message?page=${page}`)
+    fetch(`/api/thread/${id}?page=${page}`)
       .then(res => res.json())
       .then(resolve)
       .catch(reject)

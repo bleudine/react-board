@@ -1,5 +1,6 @@
 import faker from 'faker'
 import { createServer, Model, Factory, hasMany, belongsTo } from 'miragejs';
+import {PAGE_SIZE} from '../constants';
 
 export const TOPICS = []
 export const THREADS = []
@@ -30,6 +31,7 @@ export function mockApi() {
           author: `${faker.name.firstName()} ${faker.name.lastName()}`,
           avatar: faker.image.avatar(),
           content: faker.lorem.paragraphs(),
+          createdAt,
           messages: messages.map((messageCreatedAt) => ({
             author: `${faker.name.firstName()} ${faker.name.lastName()}`,
             avatar: faker.image.avatar(),
@@ -42,13 +44,17 @@ export function mockApi() {
     },
     routes() {
       this.get('/api/thread')
-      this.get('/api/thread/:id/message', (schema, request) => {
+      this.get('/api/thread/:id', (schema, request) => {
         const id = request.params.id
         const { page } = request.queryParams
         const thread = schema.threads.find(id)
-        return { items: thread.messages, count: thread.messages.length }
+        const pageInRange = page <= Math.ceil(thread.messages.length / 25)
+        const indexToSlice = pageInRange ? (page - 1) * PAGE_SIZE : 0
+        const messages = thread.messages.slice(indexToSlice, indexToSlice + PAGE_SIZE)
+        const { author, avatar, content, createdAt, title } = thread
+        return { items: messages, initialPost: { author, avatar, content, createdAt, title }, count: thread.messages.length }
       })
-      this.post('/api/thread/:id/message', (schema, request) => {
+      this.post('/api/thread/:id', (schema, request) => {
         const id = request.params.id
         const message = JSON.parse(request.requestBody)
         const thread = schema.db.threads.findBy({id})
