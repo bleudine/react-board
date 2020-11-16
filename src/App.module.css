@@ -1,3 +1,46 @@
+.appContainer {
+
+}
+
+.appHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #003D5B;
+    border-bottom: 1px solid#edae49;
+}
+
+.appTitle {
+    margin-left: 16px;
+    color: #edae49;
+    font-family: "Noto Mono";
+    text-transform: uppercase;
+}
+
+.loginButton {
+    cursor: pointer;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 16px;
+}
+
+.loggedIn, .loggedOut {
+    margin: 0 4px;
+}
+
+.loggedIn {
+    fill: #edae49;
+}
+
+.loggedOut {
+    fill: whitesmoke;
+}
+
 .container {
     max-width: 80em;
     margin: auto;
