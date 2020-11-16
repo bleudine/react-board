@@ -5,8 +5,6 @@ import { useThreads } from '../../utils/contexts/threads';
 
 import styles from './ThreadList.module.css'
 
-
-
 function ThreadList() {
   const [threads, getThreads] = useThreads()
 
@@ -14,15 +12,18 @@ function ThreadList() {
     getThreads()
   }, [])
 
-  return threads.map(({ title, author, createdAt, lastUpdated, id, messages, content }) => (
-    <Link className={styles.threadListItem} to={`/${id}`}>
-      <span className={styles.title}>{title}</span>
-      <span className={styles.separator} />
-      <div className={styles.threadInfos}>
-        Created by {author}, {messages} messages, last updated on {lastUpdated}
-      </div>
-    </Link>
-  ))
+  return threads.map(({ title, author, lastUpdated, id, messages }) => {
+    const date = new Date(lastUpdated)
+   return (
+     <Link key={`thread-${id}`} className={styles.threadListItem} to={`/${id}`}>
+       <span className={styles.gradient} />
+       <span className={styles.title}>{title}</span>
+       <div className={styles.threadInfos}>
+         Created by {author}, {messages} messages, last updated on {date.toDateString()}
+       </div>
+     </Link>
+   )
+  })
 }
 
 ThreadList.propTypes = {

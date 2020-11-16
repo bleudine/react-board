@@ -18,7 +18,7 @@ function Thread() {
     const params = new URLSearchParams(search)
     const page = params.get('page')
     getMessages(id, page)
-  }, [search])
+  }, [search, id])
 
   return (
     <div className={styles.container}>
