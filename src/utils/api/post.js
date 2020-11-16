@@ -8,12 +8,12 @@ function message(id, message, author) {
           author
         })
       }
-      )
+    )
       .then(resolve)
-      .catch(reject)
-  })
+      .catch(reject);
+  });
 }
 
 export default {
   message,
-}
+};

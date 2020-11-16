@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from './Message.module.css'
+import styles from './Message.module.css';
 
-function Message({ content, author, createdAt, avatar }) {
-  const date = new Date(createdAt)
+function Message({content, author, createdAt, avatar}) {
+  const date = new Date(createdAt);
   return (
     <div className={styles.container}>
       <aside className={styles.aside}>
         <div className={styles.authorAvatar}>
-          <img src={avatar} alt={`${author}-avatar`} />
+          <img src={avatar} alt={`${author}-avatar`}/>
         </div>
         <span className={styles.authorName}>{author}</span>
       </aside>
@@ -22,12 +22,12 @@ function Message({ content, author, createdAt, avatar }) {
         </footer>
       </main>
     </div>
-  )
+  );
 }
 
 Message.propTypes = {
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-}
+};
 
-export default Message
+export default Message;
