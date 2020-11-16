@@ -1,17 +1,25 @@
 import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import styles from './MessageForm.module.css'
 
-function MessageForm({ onSubmit }) {
+function MessageForm({ onSubmit, newLocation }) {
   const [message, setMessage] = React.useState('')
   const [authorName, setAuthorName] = React.useState('')
   const [showForm, setShowForm] = React.useState(false)
+  const { search } = useLocation()
   function onFormSubmit (e) {
     e.preventDefault()
-    onSubmit(message)
+    onSubmit(message, authorName)
   }
 
+  React.useEffect(() => {
+    if (showForm && !newLocation.includes(search)) {
+      setShowForm(false)
+    }
+  }, [search])
+
   if (!showForm) {
-    return <button className={styles.button} onClick={() => setShowForm(true)}>reply</button>
+    return <Link className={styles.button} onClick={() => setShowForm(true)} to={newLocation}>reply</Link>
   }
   return (
     <form className={styles.form} onSubmit={onFormSubmit}>

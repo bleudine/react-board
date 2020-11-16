@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import api from '../api'
 
 export const MessagesContext = React.createContext(null)
@@ -35,7 +36,13 @@ function reducer(state, action) {
 
 export function MessageProvider(props) {
   const [state, dispatch] = React.useReducer(reducer, initialState)
-  function getMessages(id, page) {
+  const { search } = useLocation()
+  function getPage() {
+    const params = new URLSearchParams(search)
+    return params.get('page') || 1
+  }
+  function getMessages(id) {
+    const page = getPage()
     api.get.messages(id, page).then(({items, count, initialPost}) => dispatch({
       type: 'SET_MESSAGES',
       messages: items,
@@ -44,11 +51,12 @@ export function MessageProvider(props) {
     }))
   }
 
-  function postMessage(id, message) {
-    api.post.message(id, message).then(() => getMessages(id))
+  function postMessage(id, message, author) {
+    const page = getPage()
+    api.post.message(id, message, author).then(() => getMessages(id, page))
   }
 
-  const value = React.useMemo(() => [state, getMessages, postMessage], [state])
+  const value = React.useMemo(() => [state, getMessages, postMessage], [state, search])
 
   return <MessagesContext.Provider value={value} {...props} />
 }

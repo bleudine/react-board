@@ -1,24 +1,28 @@
 import React from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 
-import {useMessages} from '../../utils/contexts/messages';
-import Message from '../../components/Message/Message';
-import MessageForm from '../../components/MessageForm/MessageForm';
-import Paginator from '../../components/Paginator/Paginator';
+import {useMessages} from '../../utils/contexts/messages'
+import Message from '../../components/Message/Message'
+import MessageForm from '../../components/MessageForm/MessageForm'
+import Paginator from '../../components/Paginator/Paginator'
 
 import styles from './Thread.module.css'
+import {PAGE_SIZE} from '../../utils/constants'
 
 function Thread() {
   const [{messages, count, initialPost}, getMessages, postMessage] = useMessages()
-  const { search } = useLocation()
+  const { search, pathname } = useLocation()
   const { id } = useParams()
   const { title, content, author, avatar, createdAt } = initialPost
+  const loading = !Boolean(messages.length)
 
   React.useEffect(() => {
-    const params = new URLSearchParams(search)
-    const page = params.get('page')
-    getMessages(id, page)
+    getMessages(id)
   }, [search, id])
+
+  if (loading) {
+    return <div>loading ...</div>
+  }
 
   return (
     <div className={styles.container}>
@@ -40,7 +44,9 @@ function Thread() {
       <footer>
         <Paginator count={count} />
       </footer>
-      <MessageForm onSubmit={(message) => postMessage(id, message)} />
+      <MessageForm
+        newLocation={`${pathname}?page=${Math.ceil(count / PAGE_SIZE)}`}
+        onSubmit={(message, author) => postMessage(id, message, author)} />
     </div>
   )
 }

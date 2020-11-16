@@ -1,5 +1,5 @@
 import faker from 'faker'
-import { createServer, Model, Factory, hasMany, belongsTo } from 'miragejs';
+import { createServer, Model } from 'miragejs';
 import {PAGE_SIZE} from '../constants';
 
 export const TOPICS = []
@@ -61,10 +61,16 @@ export function mockApi() {
       })
       this.post('/api/thread/:id', (schema, request) => {
         const id = request.params.id
-        const message = JSON.parse(request.requestBody)
+        const { content, author } = JSON.parse(request.requestBody)
         const thread = schema.db.threads.findBy({id})
-        console.log(thread)
-        schema.db.threads.update(thread, {...thread, messages: [...thread.messages, message]})
+        const newPost = {
+          content,
+          author,
+          avatar: 'https://www.placecage.com/200/200',
+          createdAt: new Date(),
+          private: false,
+        }
+        schema.db.threads.update(thread, {...thread, messages: [...thread.messages, newPost]})
       })
     }
   })

@@ -1,9 +1,12 @@
-function message(id, message) {
+function message(id, message, author) {
   return new Promise((resolve, reject) => {
     fetch(`/api/thread/${id}`,
       {
         method: 'POST',
-        body: JSON.stringify(message)
+        body: JSON.stringify({
+          content: message,
+          author
+        })
       }
       )
       .then(resolve)
