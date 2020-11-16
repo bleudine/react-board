@@ -15,6 +15,7 @@ function MessageForm({ onSubmit }) {
   }
   return (
     <form className={styles.form} onSubmit={onFormSubmit}>
+      <button className={styles.closeButton} onClick={() => setShowForm(false)}>&#10799;</button>
       <label className={styles.label} htmlFor="nickname">Your name :</label>
       <input className={styles.textInput} type="text" value={authorName} required onChange={(e) => setAuthorName(e.target.value)} />
       <label className={styles.label} htmlFor="content">Your message :</label>

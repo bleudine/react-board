@@ -3,6 +3,7 @@
     margin: 12px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .label {
@@ -23,7 +24,7 @@
     height: 125px;
 }
 
-.button {
+.button, .closeButton {
     background-color: #edae49;
     color: #003D5B;
     padding: 4px 8px;
@@ -31,4 +32,19 @@
     text-transform: uppercase;
     align-self: center;
     margin: 12px;
+    cursor: pointer;
+}
+
+.closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    margin: 4px;
+    padding: 0;
+    height: 16px;
+    width: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
