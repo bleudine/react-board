@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import { useThreads } from '../../utils/contexts/threads';
 
+import styles from './ThreadList.module.css'
+
 
 
 function ThreadList() {
@@ -12,9 +14,13 @@ function ThreadList() {
     getThreads()
   }, [])
 
-  return threads.map(({ title, author, createdAt, id }) => (
-    <Link to={`/${id}`}>
-      <p>{title}</p>
+  return threads.map(({ title, author, createdAt, lastUpdated, id, messages, content }) => (
+    <Link className={styles.threadListItem} to={`/${id}`}>
+      <span className={styles.title}>{title}</span>
+      <span className={styles.separator} />
+      <div className={styles.threadInfos}>
+        Created by {author}, {messages} messages, last updated on {lastUpdated}
+      </div>
     </Link>
   ))
 }
