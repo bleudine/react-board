@@ -43,12 +43,17 @@ export function mockApi() {
       })
     },
     routes() {
-      this.get('/api/thread')
+      this.get('/api/thread', (schema) => {
+        const threads = schema.threads.all()
+        return threads.models.map(({ author, content, createdAt, messages, id, title }) => ({
+          title, author, content, createdAt, id, messages: messages.length, lastUpdated: messages[messages.length - 1].createdAt
+        }))
+      })
       this.get('/api/thread/:id', (schema, request) => {
         const id = request.params.id
         const { page } = request.queryParams
         const thread = schema.threads.find(id)
-        const pageInRange = page <= Math.ceil(thread.messages.length / 25)
+        const pageInRange = page <= Math.ceil(thread.messages.length / PAGE_SIZE)
         const indexToSlice = pageInRange ? (page - 1) * PAGE_SIZE : 0
         const messages = thread.messages.slice(indexToSlice, indexToSlice + PAGE_SIZE)
         const { author, avatar, content, createdAt, title } = thread

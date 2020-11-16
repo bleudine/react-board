@@ -22,7 +22,7 @@ function threads() {
   return new Promise((resolve, reject) => {
     fetch(`/api/thread`)
       .then(res => res.json())
-      .then((response) => resolve(response.threads))
+      .then(resolve)
       .catch(reject)
   })
 }

@@ -15,7 +15,7 @@ export function useThreads() {
 export function ThreadsProvider(props) {
   const [threads, setThreads] = React.useState([])
   function getThreads() {
-    api.get.threads().then((msgs) => setThreads(msgs))
+    api.get.threads().then((thrds) => setThreads(thrds))
   }
 
   const value = React.useMemo(() => [threads, getThreads], [threads])
