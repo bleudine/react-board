@@ -1,51 +1,53 @@
 .form {
-    padding: 4px;
-    margin: 12px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  padding: 4px;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .label {
-    margin: 8px 0;
-    color: whitesmoke;
+  margin: 8px 0;
+  color: whitesmoke;
 }
 
-.textInput, .textarea {
-    background-color: transparent;
-    border-width: 1px;
-    border-style: solid;
-    border-color: #edae49;
-    color: #edae49;
-    padding: 10px;
+.textInput,
+.textarea {
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #edae49;
+  color: #edae49;
+  padding: 10px;
 }
 
 .textarea {
-    height: 125px;
+  height: 125px;
 }
 
-.button, .closeButton {
-    background-color: #edae49;
-    color: #003D5B;
-    padding: 4px 8px;
-    font-size: 16px;
-    text-transform: uppercase;
-    align-self: center;
-    margin: 12px;
-    cursor: pointer;
-    text-decoration: none;
+.button,
+.closeButton {
+  background-color: #edae49;
+  color: #003d5b;
+  padding: 4px 8px;
+  font-size: 16px;
+  text-transform: uppercase;
+  align-self: center;
+  margin: 12px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .closeButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 12px;
-    margin: 4px;
-    padding: 0;
-    height: 16px;
-    width: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  margin: 4px;
+  padding: 0;
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,12 +1,12 @@
-import React from 'react';
-import {Link, useLocation} from 'react-router-dom';
-import styles from './Paginator.module.css';
-import {PAGE_SIZE} from '../../utils/constants';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import styles from "./Paginator.module.css";
+import { PAGE_SIZE } from "../../utils/constants";
 
-function Paginator({count}) {
-  const {pathname, search} = useLocation();
+function Paginator({ count }) {
+  const { pathname, search } = useLocation();
   const params = new URLSearchParams(search);
-  const page = params.get('page');
+  const page = params.get("page");
   const currentPage = page && parseInt(page);
   const pages = new Array(Math.ceil(count / PAGE_SIZE)).fill(undefined);
   return (
@@ -18,7 +18,8 @@ function Paginator({count}) {
           <Link
             key={`page-link-${p}`}
             className={active ? styles.activeLink : styles.link}
-            to={`${pathname}?page=${p}`}>
+            to={`${pathname}?page=${p}`}
+          >
             {index + 1}
           </Link>
         );

@@ -1,14 +1,15 @@
 .container {
-    margin: 8px 16px 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  margin: 8px 16px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-.link, .activeLink {
-    margin: 0 4px;
+.link,
+.activeLink {
+  margin: 0 4px;
 }
 
 .activeLink {
-    color: whitesmoke;
+  color: whitesmoke;
 }

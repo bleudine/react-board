@@ -1,29 +1,28 @@
 .container {
-    height: calc(100vh - 70px);
-    display: flex;
-    flex-direction: column;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-    color: whitesmoke;
-    margin: 16px;
+  color: whitesmoke;
+  margin: 16px;
 }
 
 .initialPost {
-    border: 2px solid #edae49;
-    border-radius: 4px;
-    margin: 16px;
+  border: 2px solid #edae49;
+  border-radius: 4px;
+  margin: 16px;
 }
 
 .goBackLink {
-
 }
 
 .threadTitle {
-    font-size: 24px;
-    font-weight: bold;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .messageList {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }

@@ -1,49 +1,52 @@
 .threadListItem {
-    margin: 16px 12px;
-    padding: 8px;
-    border: 1px solid #edae49;
-    border-top-width: 0;
-    border-left-width: 0;
-    background-image: linear-gradient(to bottom right, transparent 2%, #00798C);
-    display: block;
-    position: relative;
+  margin: 16px 12px;
+  padding: 8px;
+  border: 1px solid #edae49;
+  border-top-width: 0;
+  border-left-width: 0;
+  background-image: linear-gradient(to bottom right, transparent 2%, #00798c);
+  display: block;
+  position: relative;
 }
 
 .threadListItem:hover::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: linear-gradient(to bottom right, transparent, rgba(255, 255, 255, .1));
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom right,
+    transparent,
+    rgba(255, 255, 255, 0.1)
+  );
 }
 
 .title {
-    font-weight: bold;
-    text-transform: capitalize;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 .threadListItem:nth-child(even) {
-    background-image: linear-gradient(to bottom right, transparent 2%, #30638E);
+  background-image: linear-gradient(to bottom right, transparent 2%, #30638e);
 }
 
 .gradient {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left, #edae49, transparent 30%);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #edae49, transparent 30%);
 }
 
 .threadInfos {
-
-    text-align: end;
-    font-size: 10px;
-    color: rgba(245, 245, 245, .7);
-    font-style: italic;
+  text-align: end;
+  font-size: 10px;
+  color: rgba(245, 245, 245, 0.7);
+  font-style: italic;
 }

@@ -1,12 +1,12 @@
-import React from 'react';
-import api from '../api';
+import React from "react";
+import api from "../api";
 
 export const ThreadsContext = React.createContext(null);
 
 export function useThreads() {
   const context = React.useContext(ThreadsContext);
   if (!context) {
-    throw new Error('useMessages must be used within a MessagesProvider');
+    throw new Error("useMessages must be used within a MessagesProvider");
   }
 
   return context;
