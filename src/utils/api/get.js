@@ -1,12 +1,12 @@
-import { MESSAGES, THREADS, TOPICS } from "../mocks";
+import { MESSAGES, THREADS, TOPICS } from '../mocks'
 
 function messages(id, page = 1) {
   return new Promise((resolve, reject) => {
     fetch(`/api/thread/${id}?page=${page}`)
       .then((res) => res.json())
       .then(resolve)
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 
 function thread(id) {
@@ -14,8 +14,8 @@ function thread(id) {
     fetch(`/api/thread/${id}`)
       .then((res) => res.json())
       .then(resolve)
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 
 function threads() {
@@ -23,12 +23,12 @@ function threads() {
     fetch(`/api/thread`)
       .then((res) => res.json())
       .then(resolve)
-      .catch(reject);
-  });
+      .catch(reject)
+  })
 }
 
 export default {
   messages,
   threads,
   thread,
-};
+}

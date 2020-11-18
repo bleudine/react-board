@@ -18,6 +18,13 @@
   background: #30638e;
 }
 
+.privateVisibility {
+  align-self: center;
+  font-style: italic;
+  font-weight: bold;
+  margin: auto;
+}
+
 .aside {
   padding: 4px;
 }

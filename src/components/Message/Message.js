@@ -1,10 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import styles from "./Message.module.css";
+import { useUser } from '../../utils/contexts/users'
+import styles from './Message.module.css'
 
-function Message({ content, author, createdAt, avatar }) {
-  const date = new Date(createdAt);
+function Message({ content, author, createdAt, avatar, isPrivate }) {
+  const [isLoggedIn] = useUser()
+  const date = new Date(createdAt)
+  if (isPrivate && !isLoggedIn) {
+    return (
+      <div className={styles.container}>
+        <p className={styles.privateVisibility}>
+          it appears this post has a visibility setting set to private, please log in to be able to see it.
+        </p>
+      </div>
+    )
+  }
   return (
     <div className={styles.container}>
       <aside className={styles.aside}>
@@ -15,17 +26,15 @@ function Message({ content, author, createdAt, avatar }) {
       </aside>
       <main className={styles.main}>
         <div className={styles.mainContent}>{content}</div>
-        <footer className={styles.footer}>
-          Posted on {date.toDateString()}
-        </footer>
+        <footer className={styles.footer}>Posted on {date.toDateString()}</footer>
       </main>
     </div>
-  );
+  )
 }
 
 Message.propTypes = {
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-};
+}
 
-export default Message;
+export default Message

@@ -1,25 +1,25 @@
-import React from "react";
-import api from "../api";
+import React from 'react'
+import api from '../api'
 
-export const ThreadsContext = React.createContext(null);
+export const ThreadsContext = React.createContext(null)
 
 export function useThreads() {
-  const context = React.useContext(ThreadsContext);
+  const context = React.useContext(ThreadsContext)
   if (!context) {
-    throw new Error("useMessages must be used within a MessagesProvider");
+    throw new Error('useMessages must be used within a MessagesProvider')
   }
 
-  return context;
+  return context
 }
 
 export function ThreadsProvider(props) {
-  const [threads, setThreads] = React.useState([]);
+  const [threads, setThreads] = React.useState([])
 
   function getThreads() {
-    api.get.threads().then((thrds) => setThreads(thrds));
+    api.get.threads().then((thrds) => setThreads(thrds))
   }
 
-  const value = React.useMemo(() => [threads, getThreads], [threads]);
+  const value = React.useMemo(() => [threads, getThreads], [threads])
 
-  return <ThreadsContext.Provider value={value} {...props} />;
+  return <ThreadsContext.Provider value={value} {...props} />
 }

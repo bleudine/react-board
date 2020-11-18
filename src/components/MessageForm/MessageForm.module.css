@@ -51,3 +51,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.loggedOut {
+  color: #edae49;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 48px auto;
+}

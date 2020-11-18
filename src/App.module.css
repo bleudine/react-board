@@ -33,11 +33,11 @@
   margin: 0 4px;
 }
 
-.loggedIn {
+.loggedOut {
   fill: #edae49;
 }
 
-.loggedOut {
+.loggedIn {
   fill: whitesmoke;
 }
 
